@@ -5,7 +5,7 @@
     },
 
     handleChange() {
-      this.correct = (this.refs.answerInput.value === this.props.translation);
+      this.correct = (this.refs.answerInput.value.toLowerCase() === this.props.translation.toLowerCase());
       this.props.onAnswer(this.correct);
     },
 
@@ -26,7 +26,7 @@
       return (
         <li>
           <span id={this.id} dangerouslySetInnerHTML={this.createMarkup('original')} />
-          <input type="text" ref="answerInput" onChange={this.handleChange} aria-labelledby={this.id} />
+          <input type="text" ref="answerInput" disabled={this.props.disabled} onChange={this.handleChange} aria-labelledby={this.id} />
           {status}
         </li>
       );
